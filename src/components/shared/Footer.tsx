@@ -4,33 +4,60 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
+const webDevServices = [
+  { label: "Full Stack Website Development", href: "/contact" },
+  { label: "UI/UX Development", href: "/contact" },
+  { label: "Backend Development", href: "/contact" },
+  { label: "AI Product Photoshoot Integration", href: "/contact" },
+];
+
+const ecommerceServices = [
+  { label: "Account Setup on Any Platform", href: "/contact" },
+  { label: "Product Listing", href: "/contact" },
+  { label: "Shipping Management", href: "/contact" },
+  { label: "Order Dispatch Handling", href: "/contact" },
+  { label: "Return Management", href: "/contact" },
+  { label: "Reconciliation Management", href: "/contact" },
+  { label: "Full Account Growth Strategy & Scaling", href: "/contact" },
+];
+
+const adsServices = [
+  { label: "Meta Ads", href: "/contact" },
+  { label: "Google Ads", href: "/contact" },
+  { label: "Myntra Ads", href: "/contact" },
+  { label: "Amazon Ads", href: "/contact" },
+  { label: "Flipkart Ads", href: "/contact" },
+  { label: "Other Platform Ads", href: "/contact" },
+];
+
+const influencerServices = [
+  { label: "Story Promotion", href: "/contact" },
+  { label: "Reel Making", href: "/contact" },
+  { label: "Collabs", href: "/contact" },
+  { label: "YouTube Specific Video Creation", href: "/contact" },
+  { label: "AI Photoshoots", href: "/contact" },
+  { label: "UGC Ads", href: "/contact" },
+  { label: "Shorts Editing as per Brand Needs", href: "/contact" },
+  { label: "AI Video Generation for Brand Products", href: "/contact" },
+  { label: "AI-based Content Creation", href: "/contact" },
+];
+
 const footerLinks = {
-  services: {
-    title: "Services",
-    links: [
-      { label: "Amazon Growth", href: "/contact" },
-      { label: "Flipkart Ads", href: "/contact" },
-      { label: "Account Management", href: "/contact" },
-      { label: "Listing Services", href: "/contact" },
-    ],
+  webDev: {
+    title: "Web Development",
+    links: webDevServices,
   },
-  platforms: {
-    title: "Platforms",
-    links: [
-      { label: "Amazon", href: "/contact" },
-      { label: "Flipkart", href: "/contact" },
-      { label: "Myntra", href: "/contact" },
-      { label: "Ajio", href: "/contact" },
-      { label: "Nykaa", href: "/contact" },
-    ],
+  ecommerce: {
+    title: "E-commerce",
+    links: ecommerceServices,
   },
-  company: {
-    title: "Company",
-    links: [
-      { label: "Home", href: "/" },
-      { label: "Services", href: "/#services" },
-      { label: "Contact Us", href: "/contact" },
-    ],
+  ads: {
+    title: "Ads Services",
+    links: adsServices,
+  },
+  influencer: {
+    title: "Influencer & Content",
+    links: influencerServices,
   },
 };
 
@@ -79,7 +106,7 @@ export default function Footer() {
               Vareno
             </Link>
             <p className="font-body text-sm text-[#b0b0b0] mt-2">
-              Helping Indian brands scale on Amazon, Flipkart, Myntra, and beyond.
+              Helping Indian brands grow online with web development, e-commerce, ads & content services.
             </p>
             <LiveClock />
             <div className="mt-4 flex flex-col gap-2">
@@ -95,7 +122,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="font-mono text-[13px] text-[#888888] hover:text-white transition-colors"
               >
-                WhatsApp: +91 94994 42106
+                WhatsApp: +91 9499442106
               </a>
               <p className="font-mono text-[11px] text-[#888888] mt-2">
                 India · Serving brands nationwide

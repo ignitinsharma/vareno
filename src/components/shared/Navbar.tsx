@@ -4,19 +4,42 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import Link from "next/link";
 
-const servicesItems = [
-  { title: "Amazon Growth", href: "/contact", desc: "Product Listing · Account Management · Ads Campaign" },
-  { title: "Flipkart Ads", href: "/contact", desc: "Catalog Listing · Daily Operations · Ads Campaign" },
-  { title: "Account Management", href: "/contact", desc: "End-to-end seller account handling" },
-  { title: "Listing Services", href: "/contact", desc: "SEO-optimized cataloging for all platforms" },
+const webDevServices = [
+  { title: "Full Stack Website Development", href: "/contact" },
+  { title: "UI/UX Development", href: "/contact" },
+  { title: "Backend Development", href: "/contact" },
+  { title: "AI Product Photoshoot Integration", href: "/contact" },
 ];
 
-const platformsItems = [
-  { title: "Amazon", href: "/contact" },
-  { title: "Flipkart", href: "/contact" },
-  { title: "Myntra", href: "/contact" },
-  { title: "Ajio", href: "/contact" },
-  { title: "Nykaa", href: "/contact" },
+const ecommerceServices = [
+  { title: "Account Setup on Any Platform", href: "/contact" },
+  { title: "Product Listing", href: "/contact" },
+  { title: "Shipping Management", href: "/contact" },
+  { title: "Order Dispatch Handling", href: "/contact" },
+  { title: "Return Management", href: "/contact" },
+  { title: "Reconciliation Management", href: "/contact" },
+  { title: "Full Account Growth Strategy & Scaling", href: "/contact" },
+];
+
+const adsServices = [
+  { title: "Meta Ads", href: "/contact" },
+  { title: "Google Ads", href: "/contact" },
+  { title: "Myntra Ads", href: "/contact" },
+  { title: "Amazon Ads", href: "/contact" },
+  { title: "Flipkart Ads", href: "/contact" },
+  { title: "Other Platform Ads", href: "/contact" },
+];
+
+const influencerServices = [
+  { title: "Story Promotion", href: "/contact" },
+  { title: "Reel Making", href: "/contact" },
+  { title: "Collabs", href: "/contact" },
+  { title: "YouTube Specific Video Creation", href: "/contact" },
+  { title: "AI Photoshoots", href: "/contact" },
+  { title: "UGC Ads", href: "/contact" },
+  { title: "Shorts Editing as per Brand Needs", href: "/contact" },
+  { title: "AI Video Generation for Brand Products", href: "/contact" },
+  { title: "AI-based Content Creation", href: "/contact" },
 ];
 
 export default function Navbar() {
@@ -79,32 +102,59 @@ export default function Navbar() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -8 }}
                     transition={{ duration: 0.2, ease: "easeOut" }}
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[520px] bg-[#161616] border border-white/[0.08] rounded-xl p-5 shadow-2xl"
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[580px] bg-[#161616] border border-white/[0.08] rounded-xl p-5 shadow-2xl"
                   >
                     <div className="grid grid-cols-2 gap-x-6 gap-y-4">
                       <div>
-                        <p className="font-mono text-[10px] text-[#888888] uppercase tracking-[0.2em] mb-3">Services</p>
-                        <div className="flex flex-col gap-3">
-                          {servicesItems.map((item) => (
+                        <p className="font-mono text-[10px] text-[#888888] uppercase tracking-[0.2em] mb-3">Web Development</p>
+                        <div className="flex flex-col gap-2">
+                          {webDevServices.map((item) => (
                             <Link
                               key={item.title}
                               href={item.href}
-                              className="group block"
+                              className="text-sm text-white/80 hover:text-white transition-colors py-0.5"
                             >
-                              <div className="text-sm font-medium text-white mb-0.5 group-hover:text-white/80 transition-colors">{item.title}</div>
-                              <div className="text-xs text-[#888888]">{item.desc}</div>
+                              {item.title}
                             </Link>
                           ))}
                         </div>
                       </div>
                       <div>
-                        <p className="font-mono text-[10px] text-[#888888] uppercase tracking-[0.2em] mb-3">Platforms</p>
-                        <div className="grid grid-cols-2 gap-2">
-                          {platformsItems.map((item) => (
+                        <p className="font-mono text-[10px] text-[#888888] uppercase tracking-[0.2em] mb-3">E-commerce</p>
+                        <div className="flex flex-col gap-1.5">
+                          {ecommerceServices.slice(0, 4).map((item) => (
                             <Link
                               key={item.title}
                               href={item.href}
-                              className="text-sm text-white/80 hover:text-white transition-colors py-1"
+                              className="text-sm text-white/80 hover:text-white transition-colors py-0.5"
+                            >
+                              {item.title}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                      <div>
+                        <p className="font-mono text-[10px] text-[#888888] uppercase tracking-[0.2em] mb-3">Ads Services</p>
+                        <div className="flex flex-col gap-1.5">
+                          {adsServices.map((item) => (
+                            <Link
+                              key={item.title}
+                              href={item.href}
+                              className="text-sm text-white/80 hover:text-white transition-colors py-0.5"
+                            >
+                              {item.title}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                      <div>
+                        <p className="font-mono text-[10px] text-[#888888] uppercase tracking-[0.2em] mb-3">Influencer & Content</p>
+                        <div className="flex flex-col gap-1.5">
+                          {influencerServices.slice(0, 4).map((item) => (
+                            <Link
+                              key={item.title}
+                              href={item.href}
+                              className="text-sm text-white/80 hover:text-white transition-colors py-0.5"
                             >
                               {item.title}
                             </Link>
@@ -156,23 +206,46 @@ export default function Navbar() {
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
             className="fixed inset-0 z-40 bg-[#0f0f0f] pt-20 px-6 lg:hidden"
           >
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-6 overflow-y-auto max-h-[calc(100vh-120px)] pb-8">
               <Link href="/" className="text-2xl text-white" onClick={() => setMobileOpen(false)}>Home</Link>
               <div className="text-2xl text-white/50">Services</div>
-              <div className="pl-4 flex flex-col gap-3">
-                {servicesItems.map((s) => (
+
+              <div className="pl-2 flex flex-col gap-3">
+                <p className="font-mono text-[10px] text-[#888888] uppercase tracking-[0.2em] mb-1">Web Development</p>
+                {webDevServices.map((s) => (
                   <Link key={s.title} href={s.href} className="text-lg text-[#b0b0b0]" onClick={() => setMobileOpen(false)}>
                     {s.title}
                   </Link>
                 ))}
               </div>
-              <div className="pl-4 flex flex-col gap-3">
-                {platformsItems.map((p) => (
-                  <Link key={p.title} href={p.href} className="text-lg text-[#b0b0b0]" onClick={() => setMobileOpen(false)}>
-                    {p.title}
+
+              <div className="pl-2 flex flex-col gap-3">
+                <p className="font-mono text-[10px] text-[#888888] uppercase tracking-[0.2em] mb-1">E-commerce</p>
+                {ecommerceServices.map((s) => (
+                  <Link key={s.title} href={s.href} className="text-lg text-[#b0b0b0]" onClick={() => setMobileOpen(false)}>
+                    {s.title}
                   </Link>
                 ))}
               </div>
+
+              <div className="pl-2 flex flex-col gap-3">
+                <p className="font-mono text-[10px] text-[#888888] uppercase tracking-[0.2em] mb-1">Ads Services</p>
+                {adsServices.map((s) => (
+                  <Link key={s.title} href={s.href} className="text-lg text-[#b0b0b0]" onClick={() => setMobileOpen(false)}>
+                    {s.title}
+                  </Link>
+                ))}
+              </div>
+
+              <div className="pl-2 flex flex-col gap-3">
+                <p className="font-mono text-[10px] text-[#888888] uppercase tracking-[0.2em] mb-1">Influencer & Content</p>
+                {influencerServices.map((s) => (
+                  <Link key={s.title} href={s.href} className="text-lg text-[#b0b0b0]" onClick={() => setMobileOpen(false)}>
+                    {s.title}
+                  </Link>
+                ))}
+              </div>
+
               <Link href="/contact" className="text-2xl text-white" onClick={() => setMobileOpen(false)}>Contact Us</Link>
               <a
                 href="https://wa.me/919499442106"

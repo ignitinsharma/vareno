@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 const testimonials = [
   {
@@ -29,99 +29,107 @@ export default function ShowcaseSection() {
   const activeTestimonial = testimonials[activeIndex];
 
   return (
-    <section className="bg-[#0f0f0f] py-24 md:py-32">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="results" className="bg-[#f7f5fb] py-20 text-black md:py-28">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8 md:px-12">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="mb-16"
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-12 flex flex-col justify-between gap-6 border-t border-black/15 pt-8 md:mb-16 md:flex-row md:items-end"
         >
-          <h2 className="font-display text-[40px] md:text-[52px] leading-tight mb-4">
-            <span className="text-[#666666]">Trusted by</span>{" "}
-            <span className="text-white">Indian Brands</span>
-          </h2>
-          <p className="font-body text-lg text-[#b0b0b0] max-w-2xl">
+          <div>
+            <p
+              data-cursor="text"
+              className="cursor-magnetic mb-4 text-[10px] font-semibold uppercase tracking-widest text-[#5E0ED7] sm:text-xs"
+            >
+              Results
+            </p>
+            <h2
+              data-cursor="text"
+              className="cursor-magnetic max-w-3xl text-3xl font-semibold uppercase leading-none tracking-wide text-black sm:text-5xl md:text-6xl"
+            >
+              Trusted By Indian Brands
+            </h2>
+          </div>
+          <p
+            data-cursor="text"
+            className="cursor-magnetic max-w-md text-xs font-semibold uppercase leading-relaxed tracking-widest text-black md:text-right md:text-sm"
+          >
             Real results from real brands scaling on Indian marketplaces.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-          <div className="flex flex-col gap-0">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-10">
+          <div className="flex flex-col border-t border-black/15">
             {testimonials.map((item, index) => (
-              <motion.div
+              <button
                 key={item.number}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
+                type="button"
                 onMouseEnter={() => setActiveIndex(index)}
-                className={`group relative py-6 px-4 cursor-pointer border-b border-white/[0.06] transition-colors duration-200 ${
-                  activeIndex === index ? "bg-white/[0.02]" : "hover:bg-white/[0.01]"
-                }`}
+                onFocus={() => setActiveIndex(index)}
+                data-cursor="link"
+                className="group relative border-b border-black/15 px-1 py-6 text-left transition-colors hover:bg-white/60"
               >
-                <div className="flex items-start gap-4">
-                  <span className="font-mono text-xs text-[#666666] mt-1">
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.45, delay: index * 0.08 }}
+                  className="flex items-start gap-5"
+                >
+                  <span className="mt-1 text-xs font-semibold uppercase tracking-widest text-black/45">
                     {item.number}
                   </span>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-2">
-                      <h3
-                        className={`font-body text-base transition-colors duration-200 ${
-                          activeIndex === index ? "text-white" : "text-[#b0b0b0] group-hover:text-white"
-                        }`}
-                      >
-                        {item.author}
-                      </h3>
-                      {activeIndex === index && (
-                        <motion.div
-                          layoutId="activeTestimonial"
-                          className="w-1.5 h-1.5 rounded-full bg-white"
-                        />
-                      )}
-                    </div>
-                    <p className="font-mono text-xs text-[#666666]">{item.role}</p>
+                  <div>
+                    <p
+                      data-cursor="text"
+                      className="cursor-magnetic text-lg font-semibold uppercase tracking-wide text-black"
+                    >
+                      {item.author}
+                    </p>
+                    <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-black/55">
+                      {item.role}
+                    </p>
                   </div>
-                </div>
-                <motion.div
-                  className="absolute left-0 top-0 bottom-0 w-[2px] bg-white"
+                </motion.div>
+                <motion.span
+                  className="absolute bottom-0 left-0 top-0 w-0.5 bg-[#5E0ED7]"
                   initial={{ scaleY: 0 }}
                   animate={{ scaleY: activeIndex === index ? 1 : 0 }}
                   transition={{ duration: 0.3 }}
-                  style={{ originY: 0.5 }}
                 />
-              </motion.div>
+              </button>
             ))}
           </div>
 
-          <div className="relative min-h-[300px] lg:min-h-0">
+          <div className="min-h-[300px] border border-black/15 bg-white p-6 md:p-8">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTestimonial.number}
-                initial={{ opacity: 0, x: 40 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -40 }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="h-full rounded-2xl p-8 md:p-10 flex flex-col justify-between bg-[#161616] border border-white/[0.06]"
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -24 }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                className="flex h-full flex-col justify-between gap-10"
               >
-                <div>
-                  <svg className="w-8 h-8 text-[#666666] mb-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-                  </svg>
-                  <p className="font-display text-xl md:text-2xl text-white leading-relaxed mb-8">
-                    {activeTestimonial.quote}
-                  </p>
-                </div>
+                <p
+                  data-cursor="text"
+                  className="cursor-magnetic text-2xl font-semibold uppercase leading-tight tracking-wide text-black md:text-4xl"
+                >
+                  {activeTestimonial.quote}
+                </p>
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
-                    <span className="font-display text-lg text-white">
-                      {activeTestimonial.author[0]}
-                    </span>
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#5E0ED7] text-lg font-semibold text-white">
+                    {activeTestimonial.author[0]}
                   </div>
                   <div>
-                    <p className="font-body text-white font-medium">{activeTestimonial.author}</p>
-                    <p className="font-mono text-xs text-[#666666]">{activeTestimonial.role}</p>
+                    <p className="text-sm font-semibold uppercase tracking-widest text-black">
+                      {activeTestimonial.author}
+                    </p>
+                    <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-black/55">
+                      {activeTestimonial.role}
+                    </p>
                   </div>
                 </div>
               </motion.div>

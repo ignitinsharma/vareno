@@ -1,6 +1,7 @@
 "use client";
-import { useState } from "react";
+
 import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
 const serviceCategories = [
@@ -10,7 +11,6 @@ const serviceCategories = [
     title: "Web Development Services",
     description: "End-to-end web solutions — from full stack development to AI-powered product photography integration.",
     services: ["Full Stack Website Development", "UI/UX Development", "Backend Development", "AI Product Photoshoot Integration"],
-    color: "from-blue-900/20 via-[#0f0f0f] to-[#0f0f0f]",
   },
   {
     number: "02",
@@ -18,7 +18,6 @@ const serviceCategories = [
     title: "E-commerce Services",
     description: "Complete e-commerce account management — from listing and shipping to returns, reconciliation, and full growth scaling.",
     services: ["Account Setup on Any Platform", "Product Listing", "Shipping Management", "Order Dispatch Handling", "Return Management", "Reconciliation Management", "Full Account Growth Strategy & Scaling"],
-    color: "from-green-900/20 via-[#0f0f0f] to-[#0f0f0f]",
   },
   {
     number: "03",
@@ -26,7 +25,6 @@ const serviceCategories = [
     title: "Ads Services",
     description: "Multi-platform advertising across Meta, Google, Amazon, Flipkart, Myntra, and more.",
     services: ["Meta Ads", "Google Ads", "Myntra Ads", "Amazon Ads", "Flipkart Ads", "Other Platform Ads"],
-    color: "from-orange-900/20 via-[#0f0f0f] to-[#0f0f0f]",
   },
   {
     number: "04",
@@ -34,102 +32,99 @@ const serviceCategories = [
     title: "Influencer & Content Services",
     description: "AI-powered content creation, influencer collaborations, reels, shorts, and UGC ads for brand growth.",
     services: ["Story Promotion", "Reel Making", "Collabs", "YouTube Specific Video Creation", "AI Photoshoots", "UGC Ads", "Shorts Editing as per Brand Needs", "AI Video Generation for Brand Products", "AI-based Content Creation"],
-    color: "from-purple-900/20 via-[#0f0f0f] to-[#0f0f0f]",
   },
 ];
 
-function ServiceCard({
-  category,
-  index,
-}: {
-  category: (typeof serviceCategories)[0];
-  index: number;
-}) {
-  const [isHovered, setIsHovered] = useState(false);
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <Link href="/contact" className="block">
-        <div className="relative group cursor-pointer bg-[#161616] border border-white/[0.06] rounded-2xl p-8 transition-all duration-300 hover:border-white/[0.15] hover:bg-[#1e1e1e] hover:-translate-y-1 h-full">
-          <div className="flex justify-between items-start mb-6">
-            <span className="font-mono text-xs text-[#666666]">{category.number}</span>
-            <motion.span
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: isHovered ? 1 : 0, x: isHovered ? 0 : -10 }}
-              transition={{ duration: 0.2 }}
-              className="text-white text-lg"
-            >
-              →
-            </motion.span>
-          </div>
-
-          <h3 className="font-display text-[24px] md:text-[28px] text-white mb-2 leading-tight">
-            {category.title}
-          </h3>
-          <p className="font-mono text-xs text-[#666666] mb-4 uppercase tracking-wide">
-            {category.name}
-          </p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: isHovered ? 1 : 0, y: isHovered ? 0 : 20 }}
-            transition={{ duration: 0.3 }}
-          >
-            <p className="font-body text-sm text-[#b0b0b0] mb-6 leading-relaxed">
-              {category.description}
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {category.services.map((service) => (
-                <span
-                  key={service}
-                  className="inline-flex items-center px-3 py-1 rounded-full border border-white/10 text-xs text-[#b0b0b0] font-body"
-                >
-                  {service}
-                </span>
-              ))}
-            </div>
-            <div className="mt-4 pt-4 border-t border-white/[0.06]">
-              <p className="font-body text-xs text-white/60 flex items-center gap-1">
-                Talk to our team <span>→</span>
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      </Link>
-    </motion.div>
-  );
-}
-
 export default function ServicesSection() {
   return (
-    <section id="services" className="bg-[#0f0f0f] py-24 md:py-32">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="services" className="bg-white py-20 text-black md:py-28">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8 md:px-12">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="mb-16"
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-12 flex flex-col justify-between gap-6 border-t border-black/15 pt-8 md:mb-16 md:flex-row md:items-end"
         >
-          <h2 className="font-display text-[40px] md:text-[52px] leading-tight mb-4">
-            <span className="text-[#666666]">What We</span>{" "}
-            <span className="text-white">Do</span>
-          </h2>
-          <p className="font-body text-lg text-[#b0b0b0] max-w-2xl">
+          <div>
+            <p
+              data-cursor="text"
+              className="cursor-magnetic mb-4 text-[10px] font-semibold uppercase tracking-widest text-[#5E0ED7] sm:text-xs"
+            >
+              What We Do
+            </p>
+            <h2
+              data-cursor="text"
+              className="cursor-magnetic max-w-3xl text-3xl font-semibold uppercase leading-none tracking-wide text-black sm:text-5xl md:text-6xl"
+            >
+              Services Built To Scale Online Business
+            </h2>
+          </div>
+          <p
+            data-cursor="text"
+            className="cursor-magnetic max-w-md text-xs font-semibold uppercase leading-relaxed tracking-widest text-black md:text-right md:text-sm"
+          >
             From building websites to scaling brands with ads and content — we handle every layer of your online business.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
           {serviceCategories.map((category, index) => (
-            <ServiceCard key={category.number} category={category} index={index} />
+            <motion.div
+              key={category.number}
+              initial={{ opacity: 0, y: 32 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{
+                duration: 0.6,
+                delay: index * 0.08,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+            >
+              <Link
+                href="/contact"
+                data-cursor="link"
+                className="group flex h-full flex-col justify-between border border-black/15 bg-white p-5 transition-colors hover:border-[#5E0ED7] sm:p-6 md:p-8"
+              >
+                <div>
+                  <div className="mb-8 flex items-start justify-between gap-4">
+                    <span className="text-xs font-semibold uppercase tracking-widest text-black/50">
+                      {category.number}
+                    </span>
+                    <ArrowUpRight
+                      size={20}
+                      className="text-[#5E0ED7] opacity-0 transition-opacity group-hover:opacity-100"
+                      strokeWidth={2.4}
+                    />
+                  </div>
+                  <p
+                    data-cursor="text"
+                    className="cursor-magnetic mb-3 text-[10px] font-semibold uppercase tracking-widest text-[#5E0ED7] sm:text-xs"
+                  >
+                    {category.name}
+                  </p>
+                  <h3
+                    data-cursor="text"
+                    className="cursor-magnetic mb-4 text-2xl font-semibold uppercase leading-tight tracking-wide text-black md:text-3xl"
+                  >
+                    {category.title}
+                  </h3>
+                  <p className="mb-6 text-xs font-semibold uppercase leading-relaxed tracking-widest text-black/70 sm:text-sm">
+                    {category.description}
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {category.services.map((service) => (
+                    <span
+                      key={service}
+                      className="border border-black/15 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-widest text-black sm:text-xs"
+                    >
+                      {service}
+                    </span>
+                  ))}
+                </div>
+              </Link>
+            </motion.div>
           ))}
         </div>
       </div>

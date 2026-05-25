@@ -17,33 +17,27 @@ const brands = [
 
 export default function TrustedBySection() {
   return (
-    <section className="bg-[#0f0f0f] py-24 md:py-32 overflow-hidden relative">
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse at 50% 50%, rgba(255,255,255,0.04) 0%, transparent 60%)",
-        }}
-      />
-
-      <div className="max-w-6xl mx-auto px-6 mb-12 text-center relative z-10">
+    <section id="platforms" className="overflow-hidden bg-white py-20 text-black md:py-28">
+      <div className="mx-auto mb-12 max-w-6xl px-5 text-center sm:px-8 md:px-12">
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="font-mono text-[11px] text-[#666666] uppercase tracking-[0.3em] mb-4"
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          data-cursor="text"
+          className="cursor-magnetic mb-4 text-[10px] font-semibold uppercase tracking-widest text-[#5E0ED7] sm:text-xs"
         >
-          ALL SERVICES
+          All Services
         </motion.p>
         <motion.h2
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="font-display text-[28px] md:text-[36px] text-white"
+          transition={{ duration: 0.6, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+          data-cursor="text"
+          className="cursor-magnetic mx-auto max-w-4xl text-3xl font-semibold uppercase leading-none tracking-wide text-black sm:text-5xl md:text-6xl"
         >
-          Every Platform That Matters in India
+          Every Platform That Matters In India
         </motion.h2>
       </div>
 
@@ -65,11 +59,11 @@ export default function TrustedBySection() {
         >
           <div className="flex animate-ticker hover:[animation-play-state:paused]">
             {[...brands, ...brands].map((brand, index) => (
-              <div
-                key={`${brand}-${index}`}
-                className="flex-shrink-0 mx-3"
-              >
-                <span className="inline-flex items-center px-5 py-2 rounded-full border border-white/10 text-sm text-[#b0b0b0] font-body hover:border-white/25 hover:text-white transition-colors duration-200 whitespace-nowrap">
+              <div key={`${brand}-${index}`} className="flex-shrink-0 px-2">
+                <span
+                  data-cursor="text"
+                  className="cursor-magnetic inline-flex items-center border border-black/15 bg-white px-5 py-2 text-sm font-semibold uppercase tracking-widest text-black transition-colors hover:border-[#5E0ED7] hover:text-[#5E0ED7]"
+                >
                   {brand}
                 </span>
               </div>

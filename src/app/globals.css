@@ -3,15 +3,15 @@
 @tailwind utilities;
 
 :root {
-  --bg-primary: #0f0f0f;
-  --bg-secondary: #161616;
-  --bg-tertiary: #1e1e1e;
-  --text-primary: #ffffff;
-  --text-secondary: #b0b0b0;
-  --text-muted: #666666;
-  --accent: #ffffff;
-  --accent-glow: rgba(255,255,255,0.06);
-  --border-subtle: rgba(255,255,255,0.08);
+  --bg-primary: #ffffff;
+  --bg-secondary: #f7f5fb;
+  --bg-tertiary: #eeeeee;
+  --text-primary: #000000;
+  --text-secondary: rgba(0, 0, 0, 0.72);
+  --text-muted: rgba(0, 0, 0, 0.48);
+  --accent: #5e0ed7;
+  --accent-glow: rgba(94, 14, 215, 0.12);
+  --border-subtle: rgba(0, 0, 0, 0.12);
 }
 
 html {
@@ -21,24 +21,103 @@ html {
 body {
   color: var(--text-primary);
   background: var(--bg-primary);
-  font-family: var(--font-dm-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  overflow-x: hidden;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .has-custom-cursor,
+  .has-custom-cursor * {
+    cursor: none !important;
+  }
+
+  .has-custom-cursor input,
+  .has-custom-cursor textarea,
+  .has-custom-cursor select,
+  .has-custom-cursor option,
+  .has-custom-cursor [contenteditable="true"],
+  .has-custom-cursor [data-cursor="native"] {
+    cursor: auto !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-magnetic {
+    transform: none !important;
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease !important;
+  }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+
+  .cursor-magnetic {
+    --cursor-rotate-x: 0deg;
+    --cursor-rotate-y: 0deg;
+    --cursor-shift-x: 0px;
+    --cursor-shift-y: 0px;
+    --cursor-lift: 0px;
+    --cursor-glow-x: 50%;
+    --cursor-glow-y: 50%;
+    position: relative;
+    display: inline-block;
+    transform:
+      perspective(900px)
+      translate3d(var(--cursor-shift-x), var(--cursor-shift-y), 0)
+      rotateX(var(--cursor-rotate-x))
+      rotateY(var(--cursor-rotate-y))
+      translateZ(var(--cursor-lift));
+    transform-style: preserve-3d;
+    transition:
+      transform 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+      color 0.2s ease;
+    will-change: transform;
+  }
+
+  .cursor-magnetic::after {
+    content: "";
+    position: absolute;
+    inset: -0.22em -0.28em;
+    z-index: -1;
+    border-radius: 0.18em;
+    background:
+      radial-gradient(
+        circle at var(--cursor-glow-x) var(--cursor-glow-y),
+        rgba(94, 14, 215, 0.18),
+        rgba(94, 14, 215, 0.06) 42%,
+        transparent 72%
+      );
+    opacity: 0;
+    transform: translateZ(-1px);
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+  }
+
+  .cursor-magnetic:hover,
+  .cursor-magnetic:focus-visible {
+    color: #5e0ed7;
+  }
+
+  .cursor-magnetic:hover::after,
+  .cursor-magnetic:focus-visible::after {
+    opacity: 1;
+  }
 }
 
 .nav-link {
   position: relative;
-  font-size: 15px;
-  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  color: #000000;
   transition: color 0.2s ease;
 }
 
 .nav-link:hover {
-  color: #ffffff;
+  color: var(--accent);
 }
 
 .nav-link::after {
@@ -48,7 +127,7 @@ body {
   left: 0;
   width: 100%;
   height: 1px;
-  background: white;
+  background: var(--accent);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s ease;

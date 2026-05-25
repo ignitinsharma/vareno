@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import HeroSection from "@/components/home/HeroSection";
-import StatsBar from "@/components/home/StatsBar";
 import ServicesSection from "@/components/home/ServicesSection";
 import ShowcaseSection from "@/components/home/ShowcaseSection";
 import TrustedBySection from "@/components/home/TrustedBySection";
@@ -17,7 +16,6 @@ export default function Home() {
       transition={{ duration: 0.4 }}
     >
       <HeroSection />
-      <StatsBar />
       <ServicesSection />
       <ShowcaseSection />
       <TrustedBySection />

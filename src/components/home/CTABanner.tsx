@@ -1,62 +1,59 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 
 export default function CTABanner() {
-  const headline = "Ready to scale your e-commerce business?";
-  const words = headline.split(" ");
-
   return (
-    <section className="bg-[#0f0f0f] py-24 md:py-32">
-      <div className="max-w-4xl mx-auto px-6 text-center">
-        <motion.h2
-          initial="hidden"
-          whileInView="visible"
+    <section className="bg-[#f7f5fb] py-20 text-black md:py-28">
+      <div className="mx-auto max-w-5xl px-5 text-center sm:px-8 md:px-12">
+        <motion.p
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          className="font-display text-[32px] md:text-[48px] lg:text-[56px] text-white leading-[1.1] mb-6"
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          data-cursor="text"
+          className="cursor-magnetic mb-5 text-[10px] font-semibold uppercase tracking-widest text-[#5E0ED7] sm:text-xs"
         >
-          {words.map((word, index) => (
-            <motion.span
-              key={index}
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 },
-              }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
-              className="inline-block mr-[0.3em]"
-            >
-              {word}
-            </motion.span>
-          ))}
+          Work With Us
+        </motion.p>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.65, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+          data-cursor="text"
+          className="cursor-magnetic text-3xl font-semibold uppercase leading-none tracking-wide text-black sm:text-5xl md:text-7xl"
+        >
+          Ready To Scale Your E-Commerce Business?
         </motion.h2>
 
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="font-body text-lg text-[#b0b0b0] mb-10 max-w-xl mx-auto"
+          transition={{ duration: 0.6, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}
+          data-cursor="text"
+          className="cursor-magnetic mx-auto mt-6 max-w-xl text-xs font-semibold uppercase leading-relaxed tracking-widest text-black sm:text-sm"
         >
           Join 50+ brands growing 3x YoY on Amazon and Flipkart with our strategies.
         </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
+        <motion.a
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          transition={{ duration: 0.6, delay: 0.24, ease: [0.22, 1, 0.36, 1] }}
+          href="https://wa.me/919499442106"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-cursor="link"
+          className="mt-10 inline-flex items-center gap-2 text-base font-semibold uppercase tracking-widest text-[#5E0ED7] sm:text-xl"
         >
-          <a
-            href="https://wa.me/919499442106"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative overflow-hidden inline-flex items-center justify-center bg-white text-black rounded-full px-8 py-3.5 text-sm font-medium hover:scale-[1.03] transition-transform duration-200"
-          >
-            <span className="relative z-10">Book a Free Audit on WhatsApp</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/60 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-          </a>
-        </motion.div>
+          Book A Free Audit On WhatsApp
+          <ArrowUpRight size={22} strokeWidth={2.4} />
+        </motion.a>
       </div>
     </section>
   );

@@ -1,26 +1,13 @@
-import type { Metadata } from "next";
-import { Playfair_Display, DM_Sans, JetBrains_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/shared/Navbar";
 import CustomCursor from "@/components/shared/CustomCursor";
-import ScrollProgress from "@/components/shared/ScrollProgress";
 
-const playfair = Playfair_Display({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-playfair",
-  weight: ["400", "700", "900"],
-});
-
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  variable: "--font-dm-sans",
-  weight: ["300", "400", "500"],
-});
-
-const jetbrains = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-jetbrains",
-  weight: ["400"],
+  variable: "--font-inter",
+  weight: ["600"],
 });
 
 export const metadata: Metadata = {
@@ -41,6 +28,11 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -48,11 +40,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${playfair.variable} ${dmSans.variable} ${jetbrains.variable} antialiased bg-[#0f0f0f] text-white`}
-      >
+      <body className={`${inter.variable} antialiased bg-white text-black`}>
         <CustomCursor />
-        <ScrollProgress />
         <Navbar />
         {children}
       </body>

@@ -10,23 +10,23 @@ const config: Config = {
     extend: {
       colors: {
         background: {
-          primary: "#0f0f0f",
-          secondary: "#161616",
-          tertiary: "#1e1e1e",
+          primary: "#ffffff",
+          secondary: "#f7f5fb",
+          tertiary: "#eeeeee",
         },
         foreground: {
-          primary: "#ffffff",
-          secondary: "#b0b0b0",
-          muted: "#666666",
+          primary: "#000000",
+          secondary: "rgba(0,0,0,0.72)",
+          muted: "rgba(0,0,0,0.48)",
         },
         border: {
-          subtle: "rgba(255,255,255,0.08)",
+          subtle: "rgba(0,0,0,0.12)",
         },
       },
       fontFamily: {
-        display: ["var(--font-playfair)", "serif"],
-        body: ["var(--font-dm-sans)", "sans-serif"],
-        mono: ["var(--font-jetbrains)", "monospace"],
+        display: ["var(--font-inter)", "sans-serif"],
+        body: ["var(--font-inter)", "sans-serif"],
+        mono: ["var(--font-inter)", "sans-serif"],
       },
       animation: {
         ticker: "ticker 30s linear infinite",

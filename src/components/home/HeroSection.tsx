@@ -33,7 +33,7 @@ export default function HeroSection() {
   return (
     <section className="relative flex min-h-screen flex-col overflow-hidden bg-white font-body text-black">
       <video
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute inset-0 h-full w-full object-cover object-center lg:object-left"
         src={videoUrl}
         autoPlay
         loop
@@ -43,8 +43,8 @@ export default function HeroSection() {
       />
       <div className="absolute inset-0 bg-white/45" />
 
-      <div className="flex flex-1 items-center justify-end px-5 py-8 sm:px-8 md:px-12 md:py-0">
-        <div className="relative z-10 flex w-full items-start justify-between gap-2 text-right sm:w-auto sm:justify-end sm:gap-8 md:gap-10">
+      <div className="flex flex-[0.9] items-center justify-center px-5 pb-4 pt-28 sm:px-8 lg:flex-1 lg:justify-end lg:px-12 lg:py-0">
+        <div className="relative z-10 grid w-full max-w-[300px] grid-cols-3 items-start gap-2 text-center sm:max-w-[360px] sm:gap-3 lg:flex lg:w-auto lg:max-w-none lg:justify-end lg:gap-10 lg:text-right">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
@@ -52,12 +52,12 @@ export default function HeroSection() {
               initial="hidden"
               animate="visible"
               custom={index + 2}
-              className="flex flex-col items-end"
+              className="flex flex-col items-center lg:items-end"
             >
               <div
                 data-cursor="text"
                 className="cursor-magnetic flex items-start font-semibold leading-none text-black"
-                style={{ fontSize: "clamp(1.5rem, 5vw, 3.5rem)" }}
+                style={{ fontSize: "clamp(1.3rem, 6.5vw, 3.5rem)" }}
               >
                 <span>{stat.value}</span>
                 <span
@@ -68,7 +68,7 @@ export default function HeroSection() {
                   {stat.suffix}
                 </span>
               </div>
-              <p className="mt-2 whitespace-pre-line text-[9px] font-semibold uppercase leading-tight tracking-widest text-black sm:text-xs md:text-sm">
+              <p className="mt-2 whitespace-pre-line text-[7px] font-semibold uppercase leading-tight tracking-widest text-black sm:text-xs lg:text-sm">
                 {stat.label}
               </p>
             </motion.div>
@@ -76,15 +76,15 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <div className="relative z-10 flex flex-col gap-6 px-5 pb-8 sm:px-8 md:gap-12 md:px-12 md:pb-12">
-        <div className="flex items-center justify-between gap-4">
+      <div className="relative z-10 flex flex-col items-center gap-7 px-5 pb-8 text-center sm:px-8 lg:items-stretch lg:gap-12 lg:px-12 lg:pb-12 lg:text-left">
+        <div className="flex flex-col items-center justify-between gap-5 lg:flex-row lg:gap-4">
           <motion.p
             variants={fadeUp}
             initial="hidden"
             animate="visible"
             custom={5}
             data-cursor="text"
-            className="max-w-[130px] text-[10px] font-semibold uppercase leading-tight tracking-widest text-black sm:max-w-[160px] sm:text-xs md:max-w-xs md:text-sm"
+            className="max-w-[240px] text-[10px] font-semibold uppercase leading-tight tracking-widest text-black sm:text-xs lg:max-w-xs lg:text-sm"
           >
             E-Commerce Growth
             <br />
@@ -102,23 +102,23 @@ export default function HeroSection() {
             target="_blank"
             rel="noopener noreferrer"
             data-cursor="link"
-            className="inline-flex items-center gap-2 whitespace-nowrap text-base font-semibold uppercase tracking-widest text-[#5E0ED7] sm:text-xl md:text-2xl"
+            className="inline-flex items-center gap-2 whitespace-nowrap text-sm font-semibold uppercase tracking-widest text-[#5E0ED7] sm:text-xl lg:text-2xl"
           >
             Get A Free Quote
             <ArrowUpRight size={18} className="sm:h-[22px] sm:w-[22px]" strokeWidth={2.4} />
           </motion.a>
         </div>
 
-        <div className="flex items-end justify-between gap-3 sm:gap-4">
+        <div className="flex flex-col items-center justify-between gap-6 lg:flex-row lg:items-end lg:gap-4">
           <motion.div
             variants={fadeUp}
             initial="hidden"
             animate="visible"
             custom={7}
             data-cursor="text"
-            className="w-[88px] shrink-0 sm:w-[180px] md:w-[280px]"
+            className="w-full max-w-[280px] shrink-0 lg:w-[280px]"
           >
-            <p className="text-left text-[8px] font-semibold uppercase leading-snug tracking-widest text-black sm:text-xs md:text-right md:text-sm">
+            <p className="text-center text-[10px] font-semibold uppercase leading-snug tracking-widest text-black sm:text-xs lg:text-right lg:text-sm">
               E-commerce growth experts for Indian marketplaces. Listing,
               operations, and ads that scale sales on Amazon, Flipkart, and beyond.
             </p>
@@ -126,7 +126,7 @@ export default function HeroSection() {
 
           <h1
             data-cursor="text"
-            className="cursor-magnetic max-w-[calc(100vw-8.5rem)] text-right font-semibold uppercase tracking-normal text-black sm:max-w-none"
+            className="cursor-magnetic w-full max-w-full overflow-hidden text-center font-semibold uppercase tracking-normal text-black lg:text-right"
             aria-label="India's number one marketplace agency"
           >
             {headingWords.map((word, index) => (
@@ -141,7 +141,7 @@ export default function HeroSection() {
                   }}
                   className="block"
                   style={{
-                    fontSize: "clamp(1.15rem, 5.8vw, 8rem)",
+                    fontSize: "clamp(1.3rem, 7vw, 8rem)",
                     lineHeight: 0.88,
                   }}
                 >

@@ -62,7 +62,7 @@ export default function Navbar() {
             <LogoMark />
           </motion.div>
 
-          <div className="hidden items-center gap-8 md:flex">
+          <div className="hidden items-center gap-8 lg:flex">
             {navLinks.map((link, index) => (
               <motion.div key={link.label} variants={fadeDown} custom={index + 1}>
                 <Link

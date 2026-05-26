@@ -26,6 +26,17 @@ function escapeHtml(value: string) {
     .replace(/'/g, "&#039;");
 }
 
+async function readProviderError(response: Response) {
+  const rawError = await response.text().catch(() => "");
+
+  try {
+    const parsed = JSON.parse(rawError) as { message?: string; name?: string };
+    return parsed.message || parsed.name || rawError;
+  } catch {
+    return rawError;
+  }
+}
+
 export async function POST(request: Request) {
   let payload: ContactPayload;
 
@@ -106,8 +117,17 @@ export async function POST(request: Request) {
   });
 
   if (!response.ok) {
+    const providerError = await readProviderError(response);
+    console.error("Contact form email failed", {
+      status: response.status,
+      providerError,
+    });
+
     return NextResponse.json(
-      { error: "Unable to send your message right now." },
+      {
+        error: "Unable to send your message right now.",
+        detail: process.env.NODE_ENV === "development" ? providerError : undefined,
+      },
       { status: 502 },
     );
   }

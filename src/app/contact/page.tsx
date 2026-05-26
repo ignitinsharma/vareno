@@ -34,8 +34,11 @@ export default function ContactPage() {
       });
 
       if (!response.ok) {
-        const data = (await response.json().catch(() => null)) as { error?: string } | null;
-        throw new Error(data?.error ?? "Unable to send your message right now.");
+        const data = (await response.json().catch(() => null)) as {
+          error?: string;
+          detail?: string;
+        } | null;
+        throw new Error(data?.detail ?? data?.error ?? "Unable to send your message right now.");
       }
 
       setSubmitted(true);
@@ -202,7 +205,7 @@ export default function ContactPage() {
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full border border-black/15 bg-[#f7f5fb] px-4 py-3 text-sm font-semibold uppercase tracking-widest text-black placeholder:text-black/40 focus:border-[#5E0ED7] focus:outline-none"
+                  className="w-full border border-black/15 bg-[#f7f5fb] px-4 py-3 text-sm font-medium tracking-normal text-black placeholder:text-black/40 focus:border-[#5E0ED7] focus:outline-none"
                 />
                 <input
                   type="email"
@@ -212,7 +215,7 @@ export default function ContactPage() {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full border border-black/15 bg-[#f7f5fb] px-4 py-3 text-sm font-semibold uppercase tracking-widest text-black placeholder:text-black/40 focus:border-[#5E0ED7] focus:outline-none"
+                  className="w-full border border-black/15 bg-[#f7f5fb] px-4 py-3 text-sm font-medium tracking-normal text-black placeholder:text-black/40 focus:border-[#5E0ED7] focus:outline-none"
                 />
                 <input
                   type="tel"
@@ -221,7 +224,7 @@ export default function ContactPage() {
                   placeholder="Phone Number"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full border border-black/15 bg-[#f7f5fb] px-4 py-3 text-sm font-semibold uppercase tracking-widest text-black placeholder:text-black/40 focus:border-[#5E0ED7] focus:outline-none"
+                  className="w-full border border-black/15 bg-[#f7f5fb] px-4 py-3 text-sm font-medium tracking-normal text-black placeholder:text-black/40 focus:border-[#5E0ED7] focus:outline-none"
                 />
                 <textarea
                   name="message"
@@ -231,7 +234,7 @@ export default function ContactPage() {
                   required
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full resize-none border border-black/15 bg-[#f7f5fb] px-4 py-3 text-sm font-semibold uppercase tracking-widest text-black placeholder:text-black/40 focus:border-[#5E0ED7] focus:outline-none"
+                  className="w-full resize-none border border-black/15 bg-[#f7f5fb] px-4 py-3 text-sm font-medium tracking-normal text-black placeholder:text-black/40 focus:border-[#5E0ED7] focus:outline-none"
                 />
                 <button
                   type="submit"

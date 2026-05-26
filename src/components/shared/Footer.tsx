@@ -61,6 +61,34 @@ const footerLinks = {
   },
 };
 
+const socialLinks = [
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/profile.php?id=61584142181677",
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/vareno.in",
+  },
+];
+
+function SocialIcon({ label }: { label: string }) {
+  if (label === "Facebook") {
+    return (
+      <span className="flex h-5 w-5 items-center justify-center rounded-full border border-current text-[15px] font-semibold leading-none">
+        f
+      </span>
+    );
+  }
+
+  return (
+    <span className="relative flex h-5 w-5 items-center justify-center rounded-[6px] border border-current">
+      <span className="h-2 w-2 rounded-full border border-current" />
+      <span className="absolute right-[4px] top-[4px] h-1 w-1 rounded-full bg-current" />
+    </span>
+  );
+}
+
 function LiveClock() {
   const [time, setTime] = useState("");
 
@@ -174,10 +202,25 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-black/10 pt-8 sm:flex-row">
+        <div className="mt-14 flex flex-col items-center justify-between gap-5 border-t border-black/10 pt-8 sm:flex-row">
           <p className="text-xs font-semibold uppercase tracking-widest text-black/55">
             © 2026 Vareno Solutions. All Rights Reserved.
           </p>
+          <div className="flex items-center gap-3">
+            {socialLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={link.label}
+                data-cursor="link"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full text-black/60 transition-colors hover:text-[#5E0ED7]"
+              >
+                <SocialIcon label={link.label} />
+              </a>
+            ))}
+          </div>
           <div className="flex items-center gap-4">
             <Link
               href="/privacy"

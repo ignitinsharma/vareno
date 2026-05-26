@@ -27,15 +27,20 @@ const fadeDown: Variants = {
   }),
 };
 
-function LogoMark() {
+function BrandMark() {
   return (
     <Link
       href="/"
       aria-label="Vareno home"
       data-cursor="link"
-      className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#5E0ED7]"
+      className="inline-flex items-center gap-3"
     >
-      <span className="h-2.5 w-2.5 rounded-full bg-[#5E0ED7]" />
+      <span className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#5E0ED7]">
+        <span className="h-2.5 w-2.5 rounded-full bg-[#5E0ED7]" />
+      </span>
+      <span className="text-base font-semibold uppercase tracking-widest text-[#5E0ED7]">
+        Vareno
+      </span>
     </Link>
   );
 }
@@ -59,7 +64,7 @@ export default function Navbar() {
       >
         <div className="flex items-center justify-between">
           <motion.div variants={fadeDown} custom={0}>
-            <LogoMark />
+            <BrandMark />
           </motion.div>
 
           <div className="hidden items-center gap-8 lg:flex">
@@ -104,7 +109,7 @@ export default function Navbar() {
             className="fixed inset-0 z-50 flex min-h-screen flex-col bg-white px-5 pb-8 pt-5 sm:px-8"
           >
             <div className="flex items-center justify-between">
-              <LogoMark />
+              <BrandMark />
               <button
                 type="button"
                 aria-label="Close menu"

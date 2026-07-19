@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design Checkup — Vareno</title>
+<style>
+  :root {
+    --bg: #0d0d12;
+    --surface: #16161d;
+    --text: #e0dce8;
+    --muted: #888;
+    --accent: #7c3aed;
+    --red: #ef4444;
+    --amber: #f59e0b;
+    --green: #22c55e;
+    --border: rgba(255,255,255,0.06);
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 48px 24px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 4px; }
+  h2 { font-size: 1.1rem; font-weight: 600; margin: 32px 0 12px; color: var(--accent); }
+  .meta { color: var(--muted); font-size: 0.85rem; margin-bottom: 32px; }
+  .score-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .score { font-size: 3rem; font-weight: 800; color: var(--amber); }
+  .score-denom { font-size: 1.2rem; color: var(--muted); }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0 32px; }
+  th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+  th { color: var(--muted); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .healthy { color: var(--green); font-weight: 700; }
+  .watch { color: var(--amber); font-weight: 700; }
+  .critical { color: var(--red); font-weight: 700; }
+  .issue {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+  .issue h3 { font-size: 0.95rem; margin-bottom: 6px; }
+  .issue p { font-size: 0.85rem; color: var(--muted); margin-bottom: 4px; }
+  .issue .file { font-family: monospace; font-size: 0.8rem; color: var(--accent); }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-right: 6px;
+  }
+  .tag-critical { background: rgba(239,68,68,0.15); color: var(--red); }
+  .tag-watch { background: rgba(245,158,11,0.15); color: var(--amber); }
+  ul { padding-left: 20px; margin: 8px 0; }
+  li { font-size: 0.85rem; margin-bottom: 6px; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<h1>Design Checkup</h1>
+<p class="meta">
+  <strong>Vareno</strong> — Dark wolf-themed landing page &middot;
+  Register: Brand &middot;
+  Composition: Decide &middot;
+  2026-07-18
+</p>
+
+<div class="score-box">
+  <div>
+    <span class="score">30</span><span class="score-denom">/60</span>
+  </div>
+  <div>
+    <strong>Needs attention</strong><br>
+    <span style="font-size:0.85rem;color:var(--muted)">Two critical vitals block trust and accessibility. See prescriptions below.</span>
+  </div>
+</div>
+
+<h2>Vital Signs</h2>
+<table>
+  <tr><th>Vital</th><th>Status</th><th>Score</th><th>Key Finding</th></tr>
+  <tr>
+    <td>Intentionality</td>
+    <td class="healthy">Healthy</td>
+    <td>10/10</td>
+    <td>Coherent dark palette, custom SVG wolf mark, authored animations — the surface reads as designed, not assembled.</td>
+  </tr>
+  <tr>
+    <td>Readability</td>
+    <td class="watch">Watch</td>
+    <td>5/10</td>
+    <td>Purple accent text (#5E0ED7 on dark) fails WCAG AA at ~2:1 contrast. Stat labels 7px on mobile.</td>
+  </tr>
+  <tr>
+    <td>Usability</td>
+    <td class="critical">Critical</td>
+    <td>0/10</td>
+    <td>No visible focus indicators. Custom cursor hides native cursor site-wide. No skip-to-content link.</td>
+  </tr>
+  <tr>
+    <td>Responsiveness</td>
+    <td class="watch">Watch</td>
+    <td>5/10</td>
+    <td>Form inputs 14px trigger iOS Safari auto-zoom. No safe-area handling. No RTL support.</td>
+  </tr>
+  <tr>
+    <td>Speed</td>
+    <td class="healthy">Healthy</td>
+    <td>10/10</td>
+    <td>Static generation, inline SVG, capped canvas particles, transform/opacity-only animations.</td>
+  </tr>
+  <tr>
+    <td>Accessibility</td>
+    <td class="critical">Critical</td>
+    <td>0/10</td>
+    <td>Focus invisible. Accent contrast fails. Form missing labels. Animations ignore reduced-motion. Touch targets under 44px.</td>
+  </tr>
+</table>
+
+<h2>Critical Issues</h2>
+
+<div class="issue">
+  <span class="tag tag-critical">Critical</span>
+  <h3>1. Focus disappears everywhere</h3>
+  <p>Keyboard users cannot see where they are. <code>cursor: none !important</code> removes native cursor, and <code>:focus-visible</code> only changes text color — no outline or ring.</p>
+  <p class="file">globals.css, all components</p>
+  <p>Fix: <strong>/design interaction</strong></p>
+</div>
+
+<div class="issue">
+  <span class="tag tag-critical">Critical</span>
+  <h3>2. Purple accent contrast failure</h3>
+  <p><code>#5E0ED7</code> on <code>#0a0a0f</code> achieves ~2:1 — way below WCAG AA 4.5:1 minimum. Affects every CTA, label, hover state, and brand mark text.</p>
+  <p class="file">Used in every component via text-[#5E0ED7]</p>
+  <p>Fix: <strong>/design recolor</strong></p>
+</div>
+
+<div class="issue">
+  <span class="tag tag-critical">Critical</span>
+  <h3>3. Form has no accessible labels</h3>
+  <p>Contact form uses <code>placeholder</code> as the only label. No <code>&lt;label&gt;</code> elements. Screen readers and users who tab into fields lose all context.</p>
+  <p class="file">src/app/contact/page.tsx</p>
+  <p>Fix: Add visible <code>&lt;label&gt;</code> elements</p>
+</div>
+
+<div class="issue">
+  <span class="tag tag-critical">Critical</span>
+  <h3>4. Animations ignore reduced-motion</h3>
+  <p>Wolf-breathe, moon-pulse, cta-glow, and all scroll reveals run regardless of <code>prefers-reduced-motion</code>. Only cursor magnetism is suppressed.</p>
+  <p class="file">globals.css, all section components</p>
+  <p>Fix: <strong>/design motion</strong> — wrap in reduced-motion media query</p>
+</div>
+
+<h2>Watch Items</h2>
+
+<ul>
+  <li><strong>iOS Safari input zoom</strong> — Contact form inputs at 14px trigger auto-zoom. Needs 16px min at narrow widths.</li>
+  <li><strong>Touch targets undersized</strong> — Hamburger, close, and social icons are 36px (below 44px WCAG minimum).</li>
+  <li><strong>Stat labels too small</strong> — 7px with 0.06em tracking is illegible on mobile.</li>
+  <li><strong>No skip-to-content link</strong> — Keyboard users tab through navbar on every page load.</li>
+</ul>
+
+<h2>What's Working</h2>
+
+<ul>
+  <li>Coherent four-tier dark surface system with clear depth</li>
+  <li>Distinctive wolf-themed animations (breathing, moon pulse, CTA glow)</li>
+  <li>Strong performance — static generation, capped particles, no external images</li>
+  <li>Contact form covers idle, sending, success, and error states</li>
+  <li>Decide composition drives toward one clear conversion action</li>
+  <li>Custom cursor with spring physics and magnetic text is polished</li>
+</ul>
+
+<h2>Prescriptions (Priority Order)</h2>
+
+<ol>
+  <li><strong>/design interaction</strong> — Add visible focus rings, focus management, and skip-to-content link</li>
+  <li><strong>/design recolor</strong> — Adjust purple accent for WCAG AA on dark backgrounds</li>
+  <li><strong>Direct edit</strong> — Add <code>&lt;label&gt;</code> elements to contact form fields</li>
+  <li><strong>/design motion</strong> — Respect <code>prefers-reduced-motion</code> for all animations</li>
+  <li><strong>Direct edit</strong> — Bump form input font-size to 16px minimum on narrow screens</li>
+  <li><strong>/design interaction</strong> — Size touch targets to 44px minimum</li>
+  <li><strong>Direct edit</strong> — Add skip-to-content link at page top</li>
+</ol>
+
+</body>
+</html>

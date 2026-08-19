@@ -10,7 +10,7 @@ export const SITE = {
   whatsappRaw: "919499442106",
   whatsappUrl: "https://wa.me/919499442106",
   location: "India · Serving Brands Nationwide",
-  instagram: "https://www.instagram.com/vareno.in",
+  instagram: "https://www.instagram.com/varenoindia",
   facebook: "https://www.facebook.com/profile.php?id=61584142181677",
 };
 
